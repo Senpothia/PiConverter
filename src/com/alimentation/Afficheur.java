@@ -23,9 +23,16 @@ public class Afficheur {
         
     }
     
-    void resultat(int resultatTest){
+    void resultatFinal(int resultatTest){
     
-    
+    switch (resultatTest){
+        
+            case 0:  // Test OK
+                
+                 break;
+                 
+            case 1: // Test NOK
+                
     
     }
     
