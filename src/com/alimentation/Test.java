@@ -27,15 +27,26 @@ public class Test {
     
         boolean result = false;
         
+        // Activation led PROG
+        
+        setup.activeOutput(true, setup.pinProg);
+        
+        // Commutation secteur
+        
+        setup.activeOutput(true, setup.pinPhase);
+        setup.activeOutput(true, setup.pinNeutre);
+        
+        
+        // Executer etape 1
+        
+        // Test résultat Etape 1
+        
+        
+        // Affichage résultat final
+        
         
         return result;
-        
-        
-        
-        
-        
-       
-        
+    
     }
     
 }

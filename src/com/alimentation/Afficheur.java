@@ -32,7 +32,8 @@ public class Afficheur {
                  break;
                  
             case 1: // Test NOK
-                
+                 
+        }
     
     }
     

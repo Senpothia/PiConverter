@@ -26,7 +26,7 @@ public class Setup {
         
       // Définnition des entrées
         
-        final GpioPinDigitalOutput pinProg = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "Prog", PinState.LOW);
+        public GpioPinDigitalOutput pinProg = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "Prog", PinState.LOW);
         final GpioPinDigitalOutput pinOk = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "OK", PinState.LOW);
         final GpioPinDigitalOutput pinKo = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "KO", PinState.LOW);
         final GpioPinDigitalOutput pinNeutre = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "Neutre", PinState.LOW);
@@ -44,9 +44,20 @@ public class Setup {
          final GpioPinDigitalInput direct = gpio.provisionDigitalInputPin(RaspiPin.GPIO_13, PinPullResistance.PULL_DOWN);
          final GpioPinDigitalInput test = gpio.provisionDigitalInputPin(RaspiPin.GPIO_14, PinPullResistance.PULL_DOWN);
         
-         private void activeOutput(boolean state, GpioPinDigitalOutput output) {}
+         void activeOutput(boolean state, GpioPinDigitalOutput output) {
+             
+             if (state){
+                 
+                 output.high();
+                 
+             
+             } else {output.low();}
          
-         private void activeInput(boolean state, GpioPinDigitalInput input) {}
+         
+         
+         }
+         
+         private void readInput(boolean state, GpioPinDigitalInput input) {}
        
     
 }
