@@ -17,7 +17,7 @@ import com.pi4j.io.gpio.RaspiPin;
  */
 public class ADC612S {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, Exception {
         
         Test test = new Test();
         test.exec();

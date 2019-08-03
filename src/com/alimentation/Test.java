@@ -32,10 +32,11 @@ public class Test {
     private Etape etape3 =  new Etape(false, 12, 0.15);
     
     
-    boolean exec() throws InterruptedException{
+    boolean exec() throws InterruptedException, Exception{
     
         boolean result = false;
         
+       System.out.println("Lancement séquence de test");
         // Activation led PROG
         
         setup.activeOutput(true, setup.pinProg);
@@ -54,12 +55,13 @@ public class Test {
         
         // Affichage résultat final
         Thread.sleep(5000);
-        System.out.println("Essai");
+        System.out.println("Fin séquence de test");
         setup.pinProg.setShutdownOptions(true, PinState.LOW);
         setup.pinPhase.setShutdownOptions(true, PinState.LOW);
         setup.pinNeutre.setShutdownOptions(true, PinState.LOW);
+       
+        etape1.voltmetre();
         setup.gpio.shutdown();
-
         return result;
     
     }
