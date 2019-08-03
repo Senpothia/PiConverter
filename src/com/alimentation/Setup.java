@@ -15,6 +15,8 @@ import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
+
+
 /**
  * Classe de configuration des GPIO
  * @author Michel
@@ -26,7 +28,7 @@ public class Setup {
         
       // Définnition des entrées
         
-        public GpioPinDigitalOutput pinProg = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "Prog", PinState.LOW);
+        final GpioPinDigitalOutput pinProg = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "Prog", PinState.LOW);
         final GpioPinDigitalOutput pinOk = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "OK", PinState.LOW);
         final GpioPinDigitalOutput pinKo = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "KO", PinState.LOW);
         final GpioPinDigitalOutput pinNeutre = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "Neutre", PinState.LOW);
