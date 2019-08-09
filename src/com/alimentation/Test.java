@@ -41,9 +41,9 @@ public class Test {
         
         //  public Etape(boolean stateRelais, boolean secteur, boolean batterie, boolean comBatterie, boolean charge, double voltage, double tolerance)
 
-        listeEtape[0] = new Etape(false, true, false, false, false, 12, 0.15);   // Mesures à vide
-        listeEtape[1] = new Etape(true, true, true, false, true, 12, 0.15);    // Mesures en charge avec batterie
-        listeEtape[2] = new Etape(false, false, false, true, true,10, 0.15);   // Mesures en charge avec batterie hors secteur
+        listeEtape[0] = new Etape(false, true, false, false, false, 12, 0.15, 0, 0.15);   // Mesures à vide
+        listeEtape[1] = new Etape(true, true, true, false, true, 12, 0.15, 12, 0.15);    // Mesures en charge avec batterie
+        listeEtape[2] = new Etape(false, false, false, true, true,10, 0.15, 12, 0.15);   // Mesures en charge avec batterie hors secteur
 
     }
 
@@ -130,8 +130,14 @@ public class Test {
                 setup.activeOutput(false, setup.pinCharge);
             }
 
-            resultatEtape[i] = listeEtape[i].exec(listeEtape[i].isActiveRelais());   // Lancement test de l'étape i
-
+           boolean  resultatVoltage = listeEtape[i].testVoltage();                          // Test de la tension Vout
+           boolean  resultatVoltageBat = listeEtape[i].testVoltageBat();                                                                          // Test de la tension batterie
+           boolean  resultatRelais = testRelais(listeEtape[i].isActiveRelais());            // Test du relais
+            
+            if (resultatVoltage && resultatVoltageBat && resultatRelais) {
+                
+                resultatEtape[i] = true; }
+            
             if (!resultatEtape[i]) {   // si résultat NOK
 
                 testOn = false;        // Avortement du test
