@@ -23,6 +23,13 @@ public class Afficheur {
         
     }
     
+    
+    void attente(){
+    
+        System.out.println("<--  En attente d'un nouveau test  -->");
+        
+    }
+    
     void resultatFinal(int resultatTest){
     
     switch (resultatTest){

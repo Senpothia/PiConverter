@@ -20,9 +20,13 @@ public class ADC612S {
     public static void main(String[] args) throws InterruptedException, Exception {
         
         Test test = new Test();
-        test.exec();
+        
+        while(true){
+   
+        boolean result = test.exec();
+        
+        }
         
     }
 }
-
    
