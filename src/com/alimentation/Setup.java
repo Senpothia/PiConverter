@@ -7,7 +7,6 @@ package com.alimentation;
  */
 
 
-
 import java.util.concurrent.Callable;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
@@ -21,9 +20,6 @@ import com.pi4j.io.gpio.trigger.GpioCallbackTrigger;
 import com.pi4j.io.gpio.trigger.GpioPulseStateTrigger;
 import com.pi4j.io.gpio.trigger.GpioSetStateTrigger;
 import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
-
-
-
 
 /**
  * Classe de configuration des GPIO
@@ -67,6 +63,8 @@ import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
              } else {output.low();}
         
          }
+         
+         // OPTIONNELLE A COMPLETER
          
          private boolean readInput(boolean state, GpioPinDigitalInput input) {
              

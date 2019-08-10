@@ -130,7 +130,7 @@ public class Test {
                 setup.activeOutput(false, setup.pinCharge);
             }
 
-           boolean  resultatVoltage = listeEtape[i].testVoltage();                          // Test de la tension Vout
+           boolean  resultatVoltage = listeEtape[i].testVoltageOUT();                          // Test de la tension Vout
            boolean  resultatVoltageBat = listeEtape[i].testVoltageBat();                                                                          // Test de la tension batterie
            boolean  resultatRelais = testRelais(listeEtape[i].isActiveRelais());            // Test du relais
             
@@ -221,6 +221,7 @@ public class Test {
             boolean stateRead1 = false;
             boolean stateRead2 = false;
             boolean resultat = false;
+            
             PinState pinState1 = input1.getState();
             PinState pinState2 = input1.getState();
             
