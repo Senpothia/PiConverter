@@ -16,6 +16,7 @@ import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import static com.pi4j.io.gpio.PinState.HIGH;
 import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.trigger.GpioCallbackTrigger;
 import com.pi4j.io.gpio.trigger.GpioPulseStateTrigger;
 import com.pi4j.io.gpio.trigger.GpioSetStateTrigger;
@@ -64,25 +65,4 @@ import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
         
          }
          
-         // OPTIONNELLE A COMPLETER
-         
-         private boolean readInput(boolean state, GpioPinDigitalInput input) {
-             
-           
-            boolean stateRead = false;
-            
-            PinState pinState = input.getState();
-            
-             if (pinState == HIGH){
-                 
-                 stateRead = true;
-             
-             } else {
-                 
-                 stateRead = false;
-             }
-             return stateRead;
-}
-         
-    
 }

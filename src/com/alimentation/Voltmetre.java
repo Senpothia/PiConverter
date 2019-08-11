@@ -99,6 +99,23 @@ public class Voltmetre {
                return resultat;
                
                 }
+         
+         
+         public void etallonnage () throws IOException{
+         
+             double mesure = 0;
+             byte[] data = new byte[2];
+             this.device.read(0x00, data, 0, 2);
+             int can =0;
+             
+            // Conversion
+             can  = ((data[0] & 0xFF) * 256) + (data[1] & 0xFF);
+             mesure = (ATT *(UMAX * can / 32767));
+             
+         
+             System.out.println("Tension mesurée: " + mesure);
+         
+         }
     
-    
+         
 }

@@ -25,13 +25,14 @@ public class Test {
 
     private static Object device;
 
-    private Setup setup = new Setup();
+    public Setup setup = new Setup();
     private Afficheur afficheur = new Afficheur();
     private Etape[] listeEtape;
   
 
     private boolean marcheDrt = false;
     private boolean marcheGch = false;
+    private boolean modePAP = false;
     private boolean testOn = false;
     boolean[] resultatEtape = new boolean[3];
 
@@ -79,7 +80,7 @@ public class Test {
         testOn = true;
         int i = 0;
         
-        while (marcheDrt && marcheGch && i < listeEtape.length && testOn) {  // Bouche d'execution du test par étapes
+        while (marcheDrt & marcheGch & i < listeEtape.length & testOn & !modePAP | modePAP & ADC612S.activePap & testOn ) {  // Bouche d'execution du test par étapes
 
             if (i == 0) {   // Affichage message de démarrage
                 setup.activeOutput(true, setup.pinProg);
@@ -256,4 +257,28 @@ public class Test {
              return resultat;
 }
 
+    public void setModePAP(boolean modePAP) {
+        this.modePAP = modePAP;
+    }
+
+   
+     public boolean readInput(GpioPinDigitalInput input) {
+             
+           
+            boolean stateRead = false;
+            
+            PinState pinState = input.getState();
+            
+             if (pinState == HIGH){
+                 
+                 stateRead = true;
+             
+             } else {
+                 
+                 stateRead = false;
+             }
+             return stateRead;
+}
+    
+    
 }
