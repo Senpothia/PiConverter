@@ -33,8 +33,6 @@ public class Voltmetre {
     
         public Voltmetre(int voie) throws I2CFactory.UnsupportedBusNumberException, IOException, InterruptedException{
             
-            
-             
             // Create I2C bus
 		  
                  byte[] config = null;
@@ -83,7 +81,7 @@ public class Voltmetre {
                 
                 for (int i=0; i<10; i++){
                 
-                    moyenne = moyenne + volt[i]/(i+1);
+                    moyenne = moyenne + volt[i] / 10;
                 
                 }
                 

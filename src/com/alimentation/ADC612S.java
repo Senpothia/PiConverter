@@ -58,13 +58,13 @@ public class ADC612S {
        
         if (!tst&drt){  // Activation mode Direct
         
-            test.setModePAP(false);
+            test.setModePAP(false);  // Desactivation mode pas à pas dans la classe Test
              System.out.println("MODE DIRECT ACTIF");
         }
         
         if (!tst&!drt){ // Activation mode Pas à Pas
             
-             test.setModePAP(true);
+             test.setModePAP(true);  // Activation mode pas à pas dans la classe Test
              System.out.println("MODE PAS A PAS ACTIF");
         }
         
@@ -77,16 +77,15 @@ public class ADC612S {
         
         while (tst && !drt){  // Mode étalonnage
             
-           //pap = test.readInput(test.setup.pap); 
+          
            System.out.println("MODE ETALONNAGE ACTIF");
            while(statePap == LOW){
            etalonnageOUT.etallonnage();
            Thread.sleep(1000);
-           //pap = test.readInput(test.setup.pap);
            
            }
            
-           //pap = false;
+         
             while (statePap == HIGH){
              // Attente relachement BP PAP
            }
@@ -94,7 +93,10 @@ public class ADC612S {
            while (statePap == LOW){
            etalonnageBAT.etallonnage();
            Thread.sleep(1000);
-           //pap = test.readInput(test.setup.pap);
+           }
+           
+           while (statePap == HIGH){
+             // Attente relachement BP PAP
            }
         }
         
