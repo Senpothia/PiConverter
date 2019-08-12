@@ -72,15 +72,15 @@ public class Test {
             }
         }));
         afficheur.attente();
-        while (!marcheDrt || !marcheGch){
+        while (!marcheDrt & !marcheGch | modePAP){
         
-        // attente lancement du test par activation des boutons marche
+        // attente lancement du test par activation des boutons marche ou mode pap actif
         }
         
         testOn = true;
         int i = 0;
         
-        while (marcheDrt & marcheGch & i < listeEtape.length & testOn & !modePAP | modePAP & ADC612S.activePap & testOn ) {  // Bouche d'execution du test par étapes
+        while (marcheDrt & marcheGch & i < listeEtape.length & testOn & !modePAP | modePAP & ADC612S.activePap & testOn & i < listeEtape.length) {  // Bouche d'execution du test par étapes
 
             if (i == 0) {   // Affichage message de démarrage
                 setup.activeOutput(true, setup.pinProg);
@@ -154,7 +154,7 @@ public class Test {
         setup.activeOutput(false, setup.pinNeutre);     // Déactivation neutre
         setup.activeOutput(false, setup.pinProg);       // Déactivation led Progression
 
-        if (testOn && i < listeEtape.length) {  // Test interrompu par relachement des boutons marche
+        if (testOn & i < listeEtape.length & !modePAP) {  // Test interrompu par relachement des boutons marche
 
             System.out.println("TEST INTERROMPU");
            

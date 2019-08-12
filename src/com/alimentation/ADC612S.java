@@ -24,8 +24,8 @@ import com.pi4j.io.gpio.RaspiPin;
 public class ADC612S {
     
      //public boolean pap ;
-    static PinState statePap;
-    static boolean activePap = false;
+    static PinState statePap;  // indicateur d'état du BP PAP dans bibliothèque pi4j
+    static boolean activePap = false;  // Flag indicateur de l'état du BP PAP en boolean
 
     public static void main(String[] args) throws InterruptedException, Exception {
         
@@ -56,19 +56,19 @@ public class ADC612S {
         boolean tst = test.readInput(test.setup.test); 
         boolean drt = test.readInput(test.setup.direct); 
        
-        if (!tst&drt){
+        if (!tst&drt){  // Activation mode Direct
         
             test.setModePAP(false);
              System.out.println("MODE DIRECT ACTIF");
         }
         
-        if (!tst&!drt){
+        if (!tst&!drt){ // Activation mode Pas à Pas
             
              test.setModePAP(true);
              System.out.println("MODE PAS A PAS ACTIF");
         }
         
-        if (tst&drt){
+        if (tst&drt){   // Configuration invalide
         
             System.out.println("Erreur de configuration!");
         
@@ -78,7 +78,7 @@ public class ADC612S {
         while (tst && !drt){  // Mode étalonnage
             
            //pap = test.readInput(test.setup.pap); 
-            System.out.println("MODE ETALONNAGE ACTIF");
+           System.out.println("MODE ETALONNAGE ACTIF");
            while(statePap == LOW){
            etalonnageOUT.etallonnage();
            Thread.sleep(1000);
@@ -98,7 +98,6 @@ public class ADC612S {
            }
         }
         
-                
         boolean result = test.exec();
         
         }
