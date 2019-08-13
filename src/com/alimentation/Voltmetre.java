@@ -21,9 +21,7 @@ public class Voltmetre {
     
         static final double UMAX = 3.3;
         static final double ATT = 4;
-       
-       
-    
+      
         private  I2CBus bus;
     // Get I2C device, ADS1115 I2C addresse 0x48
     // private byte[] config;
@@ -40,23 +38,24 @@ public class Voltmetre {
    
     public boolean mesure (double voltage, double tolerance, int voie) throws IOException, InterruptedException{
                 
-                 switch(voie){
-                
+                switch(voie){
+                   
                 case 1:
-                       // config = {(byte)0x44, (byte)0x83};
-                       config[0] = (byte)0x44;
+                       
+                       config[0] = (byte)0xC2;  // AINO - GND et +/- 4.096V  128SPS 
                        config[1] = (byte)0x83;
                        break;
                   
                 case 2:
                        
-                       config[0] = (byte)0x44;
+                       config[0] = (byte)0xD2; // AIN1 - GND et +/- 4.096V  128SPS 
                        config[1] = (byte)0x83;
                     
              }
                 
                 device.write(0x01, config, 0, 2);
                 Thread.sleep(500);
+                
                 boolean resultat = false;
                 double minVoltage = voltage - tolerance;
                 double maxVoltage = voltage + tolerance;
