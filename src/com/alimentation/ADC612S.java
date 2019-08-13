@@ -80,18 +80,17 @@ public class ADC612S {
           
            System.out.println("MODE ETALONNAGE ACTIF");
            while(statePap == LOW){
-           etalonnageOUT.etallonnage();
+           etalonnageOUT.etallonnage(1);
            Thread.sleep(1000);
            
            }
            
-         
             while (statePap == HIGH){
              // Attente relachement BP PAP
            }
            
            while (statePap == LOW){
-           etalonnageBAT.etallonnage();
+           etalonnageBAT.etallonnage(2);
            Thread.sleep(1000);
            }
            

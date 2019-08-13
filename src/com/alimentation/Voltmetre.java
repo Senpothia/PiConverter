@@ -98,7 +98,25 @@ public class Voltmetre {
                 }
          
          
-         public void etallonnage () throws IOException{
+         public void etallonnage (int voie) throws IOException, InterruptedException{
+             
+               switch(voie){
+                   
+                case 1:
+                       
+                       config[0] = (byte)0xC2;  // AINO - GND et +/- 4.096V  128SPS 
+                       config[1] = (byte)0x83;
+                       break;
+                  
+                case 2:
+                       
+                       config[0] = (byte)0xD2; // AIN1 - GND et +/- 4.096V  128SPS 
+                       config[1] = (byte)0x83;
+                    
+             }
+                
+                device.write(0x01, config, 0, 2);
+                Thread.sleep(500);
          
              double mesure = 0;
              byte[] data = new byte[2];
