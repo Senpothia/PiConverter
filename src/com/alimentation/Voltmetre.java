@@ -14,7 +14,8 @@ import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 /**
- *
+ * Gestion des mesures analogiques
+ * 
  * @author Michel
  */
 public class Voltmetre {

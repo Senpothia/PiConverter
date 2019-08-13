@@ -19,7 +19,7 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import java.io.IOException;
 
 /**
- *
+ * Gestion de déroulement des test par étape
  * @author Michel
  */
 public class Etape {
