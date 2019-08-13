@@ -19,7 +19,7 @@ import com.pi4j.io.i2c.I2CFactory;
  */
 public class Voltmetre {
     
-        static final double UMAX = 3.3;
+        static final double UMAX = 4.096;
         static final double ATT = 4;
       
         private  I2CBus bus;
