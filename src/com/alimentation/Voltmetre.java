@@ -24,20 +24,23 @@ public class Voltmetre {
        
        
     
-        private I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_1);
+        private  I2CBus bus;
+    // Get I2C device, ADS1115 I2C addresse 0x48
+    // private byte[] config;
+        private I2CDevice device;
         
-		// Get I2C device, ADS1115 I2C addresse 0x48
-        private I2CDevice device = bus.getDevice(0x48);
-       // private byte[] config;
-		
-    
-        public Voltmetre(int voie) throws I2CFactory.UnsupportedBusNumberException, IOException, InterruptedException{
-            
-            // Create I2C bus
-		  
-                 byte[] config = null;
-                 
-            switch(voie){
+        private byte[] config;
+
+    public Voltmetre() throws IOException, I2CFactory.UnsupportedBusNumberException {
+        
+        this.device = bus.getDevice(0x48);
+        this.bus = I2CFactory.getInstance(I2CBus.BUS_1);
+    }
+                    
+   
+    public boolean mesure (double voltage, double tolerance, int voie) throws IOException, InterruptedException{
+                
+                 switch(voie){
                 
                 case 1:
                        // config = {(byte)0x44, (byte)0x83};
@@ -51,11 +54,9 @@ public class Voltmetre {
                        config[1] = (byte)0x83;
                     
              }
-                    device.write(0x01, config, 0, 2);
-                    Thread.sleep(500);}
-    	
-         public boolean mesure(double voltage, double tolerance) throws IOException{
                 
+                device.write(0x01, config, 0, 2);
+                Thread.sleep(500);
                 boolean resultat = false;
                 double minVoltage = voltage - tolerance;
                 double maxVoltage = voltage + tolerance;
@@ -92,9 +93,8 @@ public class Voltmetre {
 		// Affichage tension moyenne
                 
 		System.out.println("Tension moyenne mesurée: " + moyenne);
-                
-               
-               return resultat;
+    
+                return resultat;
                
                 }
          

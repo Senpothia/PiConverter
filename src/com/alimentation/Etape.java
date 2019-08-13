@@ -41,8 +41,8 @@ public class Etape {
     
     public Etape(boolean stateRelais, boolean secteur, boolean batterie, boolean comBatterie, boolean charge, double voltage, double tolerance, double voltageBat, double toleranceBat) throws I2CFactory.UnsupportedBusNumberException, IOException, InterruptedException{
        
-        this.voltmetreOUT = new Voltmetre(1);
-        this.voltmetreBAT = new Voltmetre(2);
+        this.voltmetreOUT = new Voltmetre();
+        this.voltmetreBAT = new Voltmetre();
         //this.testerRelais = new TesterRelais();
         this.activeRelais = stateRelais;
         this.voltage = voltage;
@@ -57,7 +57,7 @@ public class Etape {
         
         boolean resultat = false;
        
-        resultat = voltmetreOUT.mesure(voltage, tolerance);
+        resultat = voltmetreOUT.mesure(voltage, tolerance, 1);
         //stateRead = testerRelais.test(state);
         //Mesure de tension
         
@@ -70,7 +70,7 @@ public class Etape {
         
         boolean resultat = false;
        
-        resultat = voltmetreBAT.mesure(voltageBat, toleranceBat);
+        resultat = voltmetreBAT.mesure(voltageBat, toleranceBat, 2);
         //stateRead = testerRelais.test(state);
         //Mesure de tension
         

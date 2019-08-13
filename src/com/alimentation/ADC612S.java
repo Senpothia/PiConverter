@@ -31,8 +31,8 @@ public class ADC612S {
         
         Test test = new Test();
         
-        Voltmetre etalonnageOUT = new Voltmetre(1);
-        Voltmetre etalonnageBAT = new Voltmetre(2);
+        Voltmetre etalonnageOUT = new Voltmetre();
+        Voltmetre etalonnageBAT = new Voltmetre();
         
         
         test.setup.pap.addListener(new GpioPinListenerDigital() {
